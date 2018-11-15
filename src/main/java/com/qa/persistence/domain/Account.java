@@ -5,13 +5,14 @@ import javax.persistence.*;
 @Entity
 public class Account {
 
-    @Id @GeneratedValue(strategy= GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 100)
+//    @Column(length = 100)
     private String firstName;
-    @Column(length = 100)
+//    @Column(length = 100)
     private String lastName;
-    @Column(length = 10)
+//    @Column(length = 10)
     private int accountNumber;
 
     public Account() {
@@ -49,7 +50,8 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public Account(String firstName, String lastName, int accountNumber){
+    public Account(long id, String firstName, String lastName, int accountNumber){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.accountNumber = accountNumber;
