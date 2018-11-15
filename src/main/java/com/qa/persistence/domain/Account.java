@@ -14,6 +14,9 @@ public class Account {
     @Column(length = 10)
     private int accountNumber;
 
+    public Account() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -43,6 +46,12 @@ public class Account {
     }
 
     public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public Account(String firstName, String lastName, int accountNumber){
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.accountNumber = accountNumber;
     }
 }
