@@ -14,6 +14,9 @@ public class Account {
     @Column(length = 10)
     private int accountNumber;
 
+    public Account() {
+    }
+
     public Long getId() {
         return id;
     }

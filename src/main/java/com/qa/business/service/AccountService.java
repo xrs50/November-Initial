@@ -1,4 +1,4 @@
-package com.qa.business;
+package com.qa.business.service;
 
 public interface AccountService {
     String getAllAccounts();

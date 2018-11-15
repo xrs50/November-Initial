@@ -1,13 +1,17 @@
-package com.qa.business;
+package com.qa.business.service;
 
+import com.qa.business.service.AccountService;
+import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountRepository;
+import com.qa.util.JSONUtil;
 
 import javax.inject.Inject;
 
-public class AccountServiceImplementation implements AccountService{
+public class AccountServiceImplementation implements AccountService {
 
     @Inject
     private AccountRepository repository;
+    private JSONUtil util;
 
     @Override
     public String getAllAccounts() {
@@ -16,7 +20,13 @@ public class AccountServiceImplementation implements AccountService{
 
     @Override
     public String createAnAccount(String account) {
-        return repository.createAnAccount(account);
+        Account account1 = util.getObjectForJSON(account, Account.class);
+        if(account1.getAccountNumber() == 9999){
+            return "{\"message\": \"This account number is blocked\"}";
+        }
+        else{
+            return repository.createAnAccount(account);
+        }
     }
 
     @Override
@@ -32,4 +42,6 @@ public class AccountServiceImplementation implements AccountService{
     public void setRepository(AccountRepository repository){
         this.repository = repository;
     }
+
+
 }
