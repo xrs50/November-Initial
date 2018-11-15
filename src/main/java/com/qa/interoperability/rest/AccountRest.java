@@ -8,7 +8,6 @@ import javax.ws.rs.*;
 @Path("/account")
 public class AccountRest {
 
-
     @Inject
     private AccountService service;
 
